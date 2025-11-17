@@ -24,7 +24,7 @@ provider "aws" {
 }
 
 resource "random_string" "s3_bucket_suffix" {
-  length  = 12
+  length  = 14
   special = false
   upper   = false
 }
