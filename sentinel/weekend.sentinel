@@ -1,0 +1,8 @@
+import "time"
+
+today = time.now.add(9*(3.6e+12))
+
+weekday = today.weekday_name
+weekend = ["Saturday", "Sunday"]
+
+main = rule { weekday in weekend }

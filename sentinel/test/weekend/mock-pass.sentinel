@@ -1,0 +1,7 @@
+now = {
+  "add": func(_) {
+    return {
+      "weekday_name": "Saturday",
+    }
+  },
+}

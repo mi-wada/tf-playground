@@ -1,0 +1,13 @@
+import "tfplan/v2" as tfplan
+
+min_allowed_version = "1.2.2"
+violations = 0
+
+if (tfplan.terraform_version < min_allowed_version) {
+  violations = 1
+  print("You are using fucking version. Must use higher that or equal to", min_allowed_version)
+}
+
+main = rule {
+  violations is 0
+}

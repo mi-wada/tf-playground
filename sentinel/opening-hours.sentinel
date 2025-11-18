@@ -1,0 +1,13 @@
+# 曜日。頭文字は大文字。例: Sunday
+param day
+
+# 時間。例: 午前7時ならば7、午後7時ならば19
+param hour
+
+# dayが平日かどうか
+is_weekday = rule { day not in ["Saturday", "Sunday"]}
+# hourが開店時間（午前8時から午後5時）の間であるかどうか
+is_open_hours = rule {hour >= 8 and hour <= 17}
+
+# 営業中か判定
+main = rule { is_open_hours and is_weekday }
