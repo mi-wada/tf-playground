@@ -29,6 +29,6 @@ resource "random_string" "s3_bucket_suffix" {
   upper   = false
 }
 
-resource "aws_s3_bucket" "main" {
-  bucket = "test-${random_string.s3_bucket_suffix.result}"
-}
+# resource "aws_s3_bucket" "main" {
+#   bucket = "test-${random_string.s3_bucket_suffix.result}"
+# }
