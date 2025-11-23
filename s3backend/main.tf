@@ -36,6 +36,9 @@ locals {
     staticweb = {
       id = "2e9b888b-0d06-4adb-bf6e-22ab86e57968"
     }
+    ec2 = {
+      id = "f1f7f560-601b-4643-a295-34b5143309bc"
+    }
   }
 }
 
