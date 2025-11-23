@@ -79,6 +79,28 @@ resource "aws_iam_role_policy" "s3_access" {
   })
 }
 
+resource "aws_iam_role_policy" "dynamodb_access" {
+  name = "dynamodb-access-policy"
+  role = aws_iam_role.ec2.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Action = [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+      ]
+      Resource = [
+        aws_dynamodb_table.count.arn
+      ]
+    }]
+  })
+}
+
 resource "aws_iam_instance_profile" "ec2" {
   name = "ec2"
   role = aws_iam_role.ec2.name
