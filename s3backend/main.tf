@@ -42,6 +42,9 @@ locals {
     ecs = {
       id = "ecf6c096-e2e0-40ce-802e-75364a255260"
     }
+    ecsp = {
+      id = "d734e537-0bb3-45cb-aa37-28f2852dc08d"
+    }
   }
 }
 
