@@ -1,5 +1,5 @@
 # How to use:
-# 1. Add random id to local.lock_tables
+# 1. Add random id to local.projects
 # 2. Add this to project's backend.tf
 #
 # terraform {
@@ -32,12 +32,15 @@ terraform {
 
 locals {
   s3_suffix = "03d7dc79-74e1-4100-b66e-55d830971e7b"
-  lock_tables = {
+  projects = {
     staticweb = {
       id = "2e9b888b-0d06-4adb-bf6e-22ab86e57968"
     }
     ec2 = {
       id = "f1f7f560-601b-4643-a295-34b5143309bc"
+    }
+    ecs = {
+      id = "ecf6c096-e2e0-40ce-802e-75364a255260"
     }
   }
 }
@@ -54,7 +57,7 @@ resource "aws_s3_bucket_versioning" "tf_backend" {
 }
 
 resource "aws_dynamodb_table" "tf_backend" {
-  for_each     = local.lock_tables
+  for_each     = local.projects
   name         = "tf-state-lock-${each.value.id}"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"

@@ -1,0 +1,10 @@
+region: "ap-northeast-1"
+cluster: main
+service: httpbin-service
+service_definition: ecs-service-def.json
+task_definition: ecs-task-def.json
+timeout: "10m0s"
+plugins:
+  - name: tfstate
+    config:
+      url: s3://tf-state-03d7dc79-74e1-4100-b66e-55d830971e7b/terraform.ecf6c096-e2e0-40ce-802e-75364a255260.tfstate
