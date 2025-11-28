@@ -7,17 +7,6 @@ resource "aws_vpc" "main" {
 }
 
 locals {
-  private_subnets = {
-    a = {
-      cidr_block = "10.0.10.0/24"
-      az         = "ap-northeast-1a"
-    }
-    c = {
-      cidr_block = "10.0.11.0/24"
-      az         = "ap-northeast-1c"
-    }
-  }
-
   public_subnets = {
     a = {
       cidr_block = "10.0.1.0/24"
@@ -25,6 +14,17 @@ locals {
     }
     c = {
       cidr_block = "10.0.2.0/24"
+      az         = "ap-northeast-1c"
+    }
+  }
+
+  private_subnets = {
+    a = {
+      cidr_block = "10.0.10.0/24"
+      az         = "ap-northeast-1a"
+    }
+    c = {
+      cidr_block = "10.0.11.0/24"
       az         = "ap-northeast-1c"
     }
   }
@@ -42,13 +42,6 @@ resource "aws_subnet" "public" {
   }
 }
 
-resource "aws_route_table_association" "public" {
-  for_each = local.public_subnets
-
-  route_table_id = aws_route_table.public.id
-  subnet_id      = aws_subnet.public[each.key].id
-}
-
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
@@ -56,6 +49,13 @@ resource "aws_route_table" "public" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.main.id
   }
+}
+
+resource "aws_route_table_association" "public" {
+  for_each = local.public_subnets
+
+  route_table_id = aws_route_table.public.id
+  subnet_id      = aws_subnet.public[each.key].id
 }
 
 resource "aws_internet_gateway" "main" {
