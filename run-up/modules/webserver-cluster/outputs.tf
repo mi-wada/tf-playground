@@ -5,3 +5,7 @@ output "ami" {
 output "alb_dns" {
   value = aws_lb.example.dns_name
 }
+
+output "test" {
+  value = "test"
+}
