@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 module "webserver_cluster" {
-  source       = "github.com/mi-wada/tf-playground//run-up/modules/webserver-cluster?ref=402b8b72abd249115193f9c86bb8fa968bcaa575"
+  source       = "github.com/mi-wada/tf-playground//run-up/modules/webserver-cluster?ref=b252c817b1863f3dc243a01016ce4fffd4e9a288"
   cluster_name = "stg"
 }
 
