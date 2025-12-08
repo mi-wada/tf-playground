@@ -52,6 +52,9 @@ locals {
     image_process = {
       id = "035676e5-3e4b-47cb-ba25-6e6c6cb1f7d5"
     }
+    lambda_webserver = {
+      id = "842e6c1a-5a05-4bcf-8d95-675a5618daaf"
+    }
   }
 }
 
