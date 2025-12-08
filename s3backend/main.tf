@@ -49,6 +49,9 @@ locals {
     run_up = {
       id = "9f56f81d-9f4b-4819-babc-552db086926b"
     }
+    image_process = {
+      id = "035676e5-3e4b-47cb-ba25-6e6c6cb1f7d5"
+    }
   }
 }
 
