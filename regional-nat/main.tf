@@ -87,14 +87,16 @@ data "archive_file" "script" {
   output_path = "${path.module}/script/build/bootstrap.zip"
 }
 resource "aws_iam_role" "lambda" {
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [{
-      Effect    = "Allow"
-      Principal = { Service = "lambda.amazonaws.com" }
-      Action    = "sts:AssumeRole"
-    }]
-  })
+  assume_role_policy = data.aws_iam_policy_document.lambda_assume.json
+}
+data "aws_iam_policy_document" "lambda_assume" {
+  statement {
+    actions = ["sts:AssumeRole"]
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+  }
 }
 resource "aws_iam_role_policy_attachment" "basic" {
   role       = aws_iam_role.lambda.name
