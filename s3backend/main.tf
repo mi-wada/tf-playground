@@ -13,7 +13,7 @@
 # }
 
 terraform {
-  required_version = "1.14.0"
+  required_version = "1.14.3"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -54,6 +54,9 @@ locals {
     }
     lambda_webserver = {
       id = "842e6c1a-5a05-4bcf-8d95-675a5618daaf"
+    }
+    tcpip = {
+      id = "5de212af-3fa8-4015-b9b3-a50449cd99da"
     }
   }
 }
